@@ -1,4 +1,4 @@
-package day1;
+package exercises;
 
 import utils.FileUtils;
 

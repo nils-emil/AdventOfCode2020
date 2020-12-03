@@ -1,4 +1,4 @@
-package day2;
+package exercises;
 
 import java.util.HashMap;
 
