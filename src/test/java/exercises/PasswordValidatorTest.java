@@ -2,12 +2,28 @@ package exercises;
 
 
 import org.junit.Test;
+import utils.FileUtils;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import java.io.FileNotFoundException;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class PasswordValidatorTest {
 
+
+    @Test
+    public void hasExactlyOneCharacterAtSpecifiedPositions_lotsOfNames() throws FileNotFoundException {
+        List<String> input = FileUtils.getCsvLinesAsUniqueNames("day2.csv");
+        int counter = 0;
+        for (String string: input)  {
+            boolean b = PasswordValidator.hasValidAmountOfRequiredCharacters(string);
+            if (b) {
+                counter++;
+            }
+        }
+        assertEquals(519, counter);
+    }
 
     @Test
     public void hasExactlyOneCharacterAtSpecifiedPositions_case1() {
