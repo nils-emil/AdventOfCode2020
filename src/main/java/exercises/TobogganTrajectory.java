@@ -13,30 +13,32 @@ public class TobogganTrajectory {
     public static int getNumberOfTreesEncounteredFromTopLeftToBottom(String inputfile) throws FileNotFoundException {
         List<String> input = FileUtils.getCsvLinesAsUniqueNames(inputfile);
         int numberOfTrees = 0;
-        int currentIndex = 0;
+        int yIndex = 0;
         for (String row : input) {
-            if ("#".charAt(0) == row.charAt(currentIndex)) {
+            if ('#' == row.charAt(yIndex)) {
                 numberOfTrees++;
             }
-            currentIndex += NUMBER_OF_VERTICAL_INCREMENT;
-            currentIndex = currentIndex % row.length();
+            yIndex += NUMBER_OF_VERTICAL_INCREMENT;
+            yIndex = yIndex % row.length();
         }
         return numberOfTrees;
     }
 
 
-    public static int getNumberOfTreesEncounteredFromTopLeftToBottom(String inputfile, int xInceremtn, int yIncrement) throws FileNotFoundException {
+    public static int getNumberOfTreesEncounteredFromTopLeftToBottom(String inputfile,
+                                                                     int xIncrement,
+                                                                     int yIncrement) throws FileNotFoundException {
         List<String> input = FileUtils.getCsvLinesAsUniqueNames(inputfile);
         int numberOfTrees = 0;
-        int currentIndex = 0;
+        int xIndex = 0;
         int yIndex = 0;
         for (String row : input) {
             if (yIndex % yIncrement == 0) {
-                if ("#".charAt(0) == row.charAt(currentIndex)) {
+                if ('#' == row.charAt(xIndex)) {
                     numberOfTrees++;
                 }
-                currentIndex += xInceremtn;
-                currentIndex = currentIndex % row.length();
+                xIndex += xIncrement;
+                xIndex = xIndex % row.length();
             }
             yIndex ++;
 
