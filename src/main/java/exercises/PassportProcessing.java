@@ -67,10 +67,6 @@ public class PassportProcessing {
         return false;
     }
 
-    private static List<String> getRequiredFields() {
-        return ALL_REQUIRED_PASSPORT_FIELDS;
-    }
-
     private static boolean isValid(String field, String value) {
         if (value == null) {
             return false;
