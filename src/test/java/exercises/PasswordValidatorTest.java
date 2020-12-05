@@ -14,7 +14,7 @@ public class PasswordValidatorTest {
 
     @Test
     public void hasExactlyOneCharacterAtSpecifiedPositions_lotsOfNames() throws FileNotFoundException {
-        List<String> input = FileUtils.getCsvLinesAsUniqueNames("day2.csv");
+        List<String> input = FileUtils.getCsvLines("day2.csv");
         int counter = 0;
         for (String string: input)  {
             boolean b = PasswordValidator.hasValidAmountOfRequiredCharacters(string);

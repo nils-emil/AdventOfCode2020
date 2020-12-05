@@ -20,7 +20,7 @@ public class PassportProcessing {
             Arrays.asList("amb", "blu", "brn", "gry", "grn", "hzl", "oth");
 
     public static int getNumberOfValidPassports(String inputfile) throws FileNotFoundException {
-        List<String> input = FileUtils.getCsvLinesAsUniqueNames(inputfile);
+        List<String> input = FileUtils.getCsvLines(inputfile);
         List<HashMap<String, String>> passports = parseCsvLinesToPassports(input);
         return getNumberOfValidPassports(passports);
     }

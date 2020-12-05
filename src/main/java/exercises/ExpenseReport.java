@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class ExpenseReport {
 
     public static int getMultiplicationOfTwoNumbersThatSumTo2020(String s) throws FileNotFoundException {
-        List<String> input = FileUtils.getCsvLinesAsUniqueNames(s);
+        List<String> input = FileUtils.getCsvLines(s);
         List<Integer> collect = input.stream()
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
@@ -26,7 +26,7 @@ public class ExpenseReport {
     }
 
     public static int getMultiplicationOfThreeNumbersThatSumTo2020(String s) throws FileNotFoundException {
-        List<String> input = FileUtils.getCsvLinesAsUniqueNames(s);
+        List<String> input = FileUtils.getCsvLines(s);
         List<Integer> collect = input.stream()
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());

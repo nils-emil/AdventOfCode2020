@@ -11,7 +11,7 @@ public class TobogganTrajectory {
     public static final int NUMBER_OF_VERTICAL_INCREMENT = 3;
 
     public static int getNumberOfTreesEncounteredFromTopLeftToBottom(String inputfile) throws FileNotFoundException {
-        List<String> input = FileUtils.getCsvLinesAsUniqueNames(inputfile);
+        List<String> input = FileUtils.getCsvLines(inputfile);
         int numberOfTrees = 0;
         int yIndex = 0;
         for (String row : input) {
@@ -28,7 +28,7 @@ public class TobogganTrajectory {
     public static int getNumberOfTreesEncounteredFromTopLeftToBottom(String inputfile,
                                                                      int xIncrement,
                                                                      int yIncrement) throws FileNotFoundException {
-        List<String> input = FileUtils.getCsvLinesAsUniqueNames(inputfile);
+        List<String> input = FileUtils.getCsvLines(inputfile);
         int numberOfTrees = 0;
         int xIndex = 0;
         int yIndex = 0;

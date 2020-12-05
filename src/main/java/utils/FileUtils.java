@@ -9,7 +9,7 @@ public class FileUtils {
     private FileUtils() {
     }
 
-    public static List<String> getCsvLinesAsUniqueNames(String filename) throws FileNotFoundException {
+    public static List<String> getCsvLines(String filename) throws FileNotFoundException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream resourceAsStream = classloader.getResourceAsStream(filename);
         if (resourceAsStream == null) {
