@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class BinaryBoarding {
 
     public static int findMySeatId(String inputfile) throws FileNotFoundException {
-        List<String> passes = FileUtils.getCsvLines(inputfile);
-        List<Integer> seatIds = passes.stream()
+        List<String> lines = FileUtils.getCsvLines(inputfile);
+        List<Integer> seatIds = lines.stream()
                 .map(BinaryBoarding::getSeatId)
                 .collect(Collectors.toList());
 
