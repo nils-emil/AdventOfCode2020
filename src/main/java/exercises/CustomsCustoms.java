@@ -18,26 +18,26 @@ public class CustomsCustoms {
     }
 
     private static List<Set<String>> parseCsvLinesToAnswers(List<String> input) {
-        List<Set<String>> passports = new ArrayList<>();
-        Set<String> answers = new HashSet<>();
+        List<Set<String>> allAnswers = new ArrayList<>();
+        Set<String> currentGroupsAnswer = new HashSet<>();
         boolean isFirstAnswerOfTheGroup = true;
         for (String string : input) {
             if (string.isEmpty()) {
-                passports.add(answers);
+                allAnswers.add(currentGroupsAnswer);
                 isFirstAnswerOfTheGroup = true;
-                answers = new HashSet<>();
+                currentGroupsAnswer = new HashSet<>();
             } else {
                 String[] elements = string.split("");
                 Set<String> answersInner = new HashSet<>(Arrays.asList(elements));
                 if (isFirstAnswerOfTheGroup) {
-                    answers = new HashSet<>(answersInner);
+                    currentGroupsAnswer = new HashSet<>(answersInner);
                     isFirstAnswerOfTheGroup = false;
                 } else {
-                    answers.retainAll(answersInner);
+                    currentGroupsAnswer.retainAll(answersInner);
                 }
             }
         }
-        return passports;
+        return allAnswers;
     }
 
 
