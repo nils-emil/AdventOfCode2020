@@ -28,17 +28,17 @@ public class HandyHaversacks {
         List<String> input = FileUtils.getCsvLines(csv);
         Map<String, List<String>> possibilities = getBagContentPossibilities(input);
         int howManyBagsIncludingSelf = howManyBagsInsideWithSelfIncluded("0 " + SHINY_GOLD, possibilities);
-        return howManyBagsIncludingSelf - 1;
+        return howManyBagsIncludingSelf - SELF_COUNT;
     }
 
     private static int howManyBagsInsideWithSelfIncluded(String color, Map<String, List<String>> possibilities) {
         String inputColor = color.substring(2);
-        List<String> possibleOutterBagColors = possibilities.get(inputColor);
-        if (possibleOutterBagColors.isEmpty()) {
+        List<String> possibleOuterBagColors = possibilities.get(inputColor);
+        if (possibleOuterBagColors.isEmpty()) {
             return SELF_COUNT;
         }
         int count = 0;
-        for (String possiblecolor : possibleOutterBagColors) {
+        for (String possiblecolor : possibleOuterBagColors) {
             int howManyBags = Integer.parseInt(possiblecolor.substring(0, 1));
             int howManyBagsInside = howManyBagsInsideWithSelfIncluded(possiblecolor, possibilities);
             count += howManyBags * howManyBagsInside;
