@@ -23,8 +23,8 @@ public class Day8 {
             nextIndexToBeRun = getNextIndexToBeRun(nextIndexToBeRun, command.getKey(), command.getValue());
             accumulation = getAccumulation(accumulation, command);
             if (iterations > 500) {
-                iterations = 0;
                 lines = getCommandWithModification(initialCommands, infinityLoopIndexes);
+                iterations = 0;
                 accumulation = 0;
                 nextIndexToBeRun = 0;
             }
