@@ -62,7 +62,7 @@ public class Day8 {
         for (int i = 0; i < lines.size() - 1; i++) {
             Pair<String, Integer> command = getCommand(lines.get(i));
             if (isNotAlreadyTriedJumpCommand(tried, i, command)) {
-                String element = lines.get(i).replace("nop", "jmp");
+                String element = lines.get(i).replace("jmp", "nop");
                 lines.set(i, element);
                 tried.add(i);
                 break;

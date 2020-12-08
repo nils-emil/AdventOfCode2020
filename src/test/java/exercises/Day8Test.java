@@ -12,9 +12,10 @@ public class Day8Test {
     public void findMySeatId() throws FileNotFoundException {
         assertEquals(969, Day8.getAccumulationUntilLastLine("day8.csv"));
     }
+
     @Test
     public void findMySeatId_test() throws FileNotFoundException {
-        assertEquals(661, Day8.getAccumulationUntilLastLine("day8_test.csv"));
+        assertEquals(8, Day8.getAccumulationUntilLastLine("day8_test.csv"));
     }
 
 }
