@@ -6,16 +6,16 @@ import java.io.FileNotFoundException;
 
 import static org.junit.Assert.assertEquals;
 
-public class Day8Test {
+public class HandheldHaltingTest {
 
     @Test
     public void getAccumulationUntilLastLine_case1() throws FileNotFoundException {
-        assertEquals(969, Day8.getAccumulationUntilLastLine("day8.csv"));
+        assertEquals(969, HandheldHalting.getAccumulationUntilLastLine("day8.csv"));
     }
 
     @Test
     public void getAccumulationUntilLastLine_case2() throws FileNotFoundException {
-        assertEquals(8, Day8.getAccumulationUntilLastLine("day8_test.csv"));
+        assertEquals(8, HandheldHalting.getAccumulationUntilLastLine("day8_test.csv"));
     }
 
 }

@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day8 {
+public class HandheldHalting {
 
     public static int getAccumulationUntilLastLine(String inputfile) throws FileNotFoundException {
         List<String> initialCommands = FileUtils.getCsvLines(inputfile);
