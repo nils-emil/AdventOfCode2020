@@ -66,18 +66,17 @@ public class AdapterArray {
         }
         if (counter[index] != -1) {
             return counter[index];
-        } else {
-            int maxIndex = index + 3;
-            if (maxIndex >= adapters.size()) {
-                maxIndex = adapters.size() - 1;
-            }
-            long count = IntStream.rangeClosed(index + 1, maxIndex)
-                    .filter(i -> adapters.get(index) + 3 >= adapters.get(i))
-                    .mapToLong(i -> countNumberOfWays(adapters, i, counter))
-                    .sum();
-            counter[index] = count;
-            return count;
         }
+        int maxIndex = index + 3;
+        if (maxIndex >= adapters.size()) {
+            maxIndex = adapters.size() - 1;
+        }
+        long count = IntStream.rangeClosed(index + 1, maxIndex)
+                .filter(i -> adapters.get(index) + 3 >= adapters.get(i))
+                .mapToLong(i -> countNumberOfWays(adapters, i, counter))
+                .sum();
+        counter[index] = count;
+        return count;
     }
 
 
