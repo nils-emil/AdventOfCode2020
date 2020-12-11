@@ -8,9 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day11 {
+public class SeatingSystem {
 
-    public static int task1(String inputfile) throws FileNotFoundException {
+    public static int getNumberOfOccupiedSeats(String inputfile) throws FileNotFoundException {
         List<String> lines = FileUtils.getCsvLines(inputfile);
         List<String[]> seatsList = lines.stream()
                 .map(e -> e.split(""))
@@ -31,12 +31,12 @@ public class Day11 {
                     for (int pos = 0; pos < dx.size(); pos++) {
                         int x = i + dx.get(pos);
                         int y = j + dy.get(pos);
-                        if (isBetweenBounds(x, y, seats) && seats[x][y].equals("#")) {
+                        if (directionContainsOccupiedSeat(seats, x, y, dx.get(pos), dy.get(pos))) {
                             occupied++;
                         }
                     }
                     boolean someOneSeated = seats[i][j].equals("L") && occupied == 0;
-                    boolean someOneIsLeaving = seats[i][j].equals("#") && occupied >= 4;
+                    boolean someOneIsLeaving = seats[i][j].equals("#") && occupied >= 5;
                     if (someOneSeated) {
                         changed = true;
                         seatsInput[i][j] = "#";
@@ -52,7 +52,6 @@ public class Day11 {
             }
 
         }
-        Arrays.stream(seatsInput).forEach(e -> System.out.println(String.join("", e)));
         List<String> collect = Arrays.stream(seatsInput).map(e -> String.join("", e)).collect(Collectors.toList());
         String join = String.join(",", collect);
         int charCount = 0;
@@ -65,6 +64,22 @@ public class Day11 {
                 charCount++;
         }
         return charCount;
+    }
+
+    private static boolean directionContainsOccupiedSeat(String[][] seats, int x, int y, Integer xincrement, Integer yincrement) {
+        if (!isBetweenBounds(x, y, seats)) {
+            return false;
+        }
+        if (seats[x][y].equals("#")) {
+            return true;
+        }
+        if (seats[x][y].equals("L")) {
+            return false;
+        }
+        if (seats[x][y].equals(".")) {
+            return directionContainsOccupiedSeat(seats,  x + xincrement,  y + yincrement,  xincrement,  yincrement);
+        }
+        return false;
     }
 
 
