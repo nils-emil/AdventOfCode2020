@@ -83,6 +83,33 @@ public class SeatingSystem {
     }
 
 
+    public static int directionContainsOccupiedSeat(String[][] map, int x, int y) {
+        int saveX = x;
+        int saveY = y;
+        int numberOfSeats = 0;
+        for (int xIncrement = -1; xIncrement < 2; xIncrement++) {
+            for (int yIncrement = 1; yIncrement > -2; yIncrement--) {
+                x = saveX + xIncrement;
+                y = saveY + yIncrement;
+                while (true)  {
+                    if (xIncrement == 0 && yIncrement == 0) {
+                        break;
+                    }
+                    if (!isBetweenBounds(x, y, map) || map[x][y].equals("L")) {
+                        break;
+                    } else if (map[x][y].equals("#")) {
+                        numberOfSeats++;
+                        break;
+                    } else {
+                        x = x + xIncrement;
+                        y = y + yIncrement;
+                    }
+                }
+            }
+        }
+        return numberOfSeats;
+    }
+
     private static boolean isBetweenBounds(int x, int y, String[][] seats) {
         int xLen = seats.length;
         int yLen = seats[0].length;
