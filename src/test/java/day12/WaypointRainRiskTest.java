@@ -7,15 +7,15 @@ import java.io.FileNotFoundException;
 
 import static org.junit.Assert.assertEquals;
 
-public class RainRiskTest {
+public class WaypointRainRiskTest {
 
     @Test
     public void part1_case1() throws FileNotFoundException {
-        Assert.assertEquals(25, RainRisk.getManhattanDistance("day12_test.csv"));
+        Assert.assertEquals(286, WaypointRainRisk.getManhattanDistance("day12_test.csv"));
     }
 
     @Test
     public void part1_case2() throws FileNotFoundException {
-        assertEquals(1589, RainRisk.getManhattanDistance("day12.csv"));
+        assertEquals(23960, WaypointRainRisk.getManhattanDistance("day12.csv"));
     }
 }
