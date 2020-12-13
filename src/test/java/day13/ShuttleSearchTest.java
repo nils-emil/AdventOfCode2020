@@ -50,6 +50,6 @@ public class ShuttleSearchTest {
 
     @Test
     public void part2_case7() throws FileNotFoundException {
-        Assert.assertEquals(1202161486, ShuttleSearch.getEarliestSbsequentTimeStamp("day13.csv"));
+        Assert.assertEquals(534035653563227L, ShuttleSearch.getEarliestSbsequentTimeStamp("day13.csv"));
     }
 }
