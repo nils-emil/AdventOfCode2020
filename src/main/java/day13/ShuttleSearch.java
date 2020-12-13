@@ -32,6 +32,8 @@ public class ShuttleSearch {
         return currentBusId * (currentEarliest - timestamp);
     }
 
+    // Chinise remainder theorem
+    // copy paste from https://www.geeksforgeeks.org/chinese-remainder-theorem-set-2-implementation/
     private static long inv(long a, long m) {
         long m0 = m, t, q;
         long x0 = 0, x1 = 1;
@@ -69,8 +71,6 @@ public class ShuttleSearch {
         return result % prod;
     }
 
-    // Chinise remainder theorem
-    // copy paste from https://www.geeksforgeeks.org/chinese-remainder-theorem-set-2-implementation/
     public static long getEarliestSbsequentTimeStamp(String inputfile) throws FileNotFoundException {
         List<String> lines = FileUtils.getCsvLines(inputfile);
         String[] busses = lines.get(1).split(",");
