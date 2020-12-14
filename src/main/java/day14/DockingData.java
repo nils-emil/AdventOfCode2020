@@ -11,7 +11,7 @@ public class DockingData {
 
     public static final String BINARY_ZERO_LEN_32 = "000000000000000000000000000000000000";
 
-    public static long getEarliestBusToTake(String inputfile) throws FileNotFoundException {
+    public static long getMemorySum(String inputfile) throws FileNotFoundException {
         List<String> lines = FileUtils.getCsvLines(inputfile);
         HashMap<String, String> memory = new HashMap<>();
         String mask = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
