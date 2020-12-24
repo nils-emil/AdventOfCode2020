@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class TicketTranslationPart2 {
 
-    public static long getMemorySum(String inputfile) throws FileNotFoundException {
+    public static long getMultiplicationResult(String inputfile) throws FileNotFoundException {
         List<String> lines = FileUtils.getCsvLines(inputfile);
         HashMap<String, List<Pair<Integer, Integer>>> ranges = getFieldRanges(lines);
         List<String> fields = getFields(lines);

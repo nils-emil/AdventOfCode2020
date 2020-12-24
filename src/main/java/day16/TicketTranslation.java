@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TicketTranslation {
 
-    public static long getMemorySum(String inputfile) throws FileNotFoundException {
+    public static long getSum(String inputfile) throws FileNotFoundException {
         List<String> lines = FileUtils.getCsvLines(inputfile);
         HashMap<String, List<Pair<Integer, Integer>>> ranges = getFieldRanges(lines);
         List<String> nearbyTicket = getNearbyTickets(lines);
