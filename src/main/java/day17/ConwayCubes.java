@@ -19,33 +19,26 @@ public class ConwayCubes {
             for (int row = 0; row < lines.size(); row++) {
                 char characted = lines.get(row).charAt(column);
                 if (characted == '#') {
-                    Cube cube = new Cube(row, column, 0, true);
+                    Cube cube = new Cube(row, column, 0,0, true);
                     cubes.add(cube);
                 } else if (characted == '.') {
-                    Cube cube = new Cube(row, column, 0, false);
+                    Cube cube = new Cube(row, column, 0, 0,false);
                     cubes.add(cube);
                 }
 
             }
         }
-        for (Cube c : cubes) {
-            System.out.println(c);
-        }
         for (int iteration = 0; iteration < 6; iteration++) {
-//            for (int cubeCount = 0; cubeCount < cubes.size(); cubeCount++) {
-//                List<Cube> newCubes = cubes.get(cubeCount).getUndocumentedNeigbours(cubes);
-//            }
+            for (int cubeCount = 0; cubeCount < cubes.size(); cubeCount++) {
+                List<Cube> newCubes = cubes.get(cubeCount).getUndocumentedNeigbours(cubes);
+                cubes.addAll(newCubes);
+            }
             long[] neigborusCount = new long[cubes.size()];
-            System.out.println(Arrays.toString(neigborusCount));
-            printMap(cubes);
             for (int c = 0; c < cubes.size(); c++) {
                 Cube cube = cubes.get(c);
                 long numberOfActiveNeightours = cube.getNumberOfActiveNeightours(cubes);
                 neigborusCount[c] = numberOfActiveNeightours;
-                System.out.println(cube.toString() + " has " + numberOfActiveNeightours + " neigbours");
             }
-            System.out.println(Arrays.toString(neigborusCount));
-
             for (int c = 0; c < cubes.size(); c++) {
                 long count = neigborusCount[c];
                 Cube cube = cubes.get(c);
@@ -57,13 +50,7 @@ public class ConwayCubes {
                     cube.setActive(isActive);
                 }
             }
-            System.out.println(Arrays.toString(neigborusCount));
-            System.out.println("--------------------------- Iteration ended");
-            long count = cubes
-                    .stream()
-                    .filter(Cube::getIsActive)
-                    .count();
-            System.out.println(count + " active cubes");
+            System.out.println("Iteration done");
         }
         List<Cube> cubeStream = cubes
                 .stream()
@@ -71,36 +58,5 @@ public class ConwayCubes {
                 .collect(Collectors.toList());
         return cubeStream.size();
     }
-
-    private static void printMap(List<Cube> cubes) {
-        int currentMax = 1;
-        for (Cube e : cubes) {
-            Integer z = e.getZ();
-            if (e.getZ() > currentMax) {
-                currentMax = e.getZ();
-            }
-        }
-
-        for (int z = 0; z < currentMax; z++) {
-            for (int xPos = 0; xPos < 10; xPos++) {
-                StringBuilder result = new StringBuilder();
-                for (int yPos = 0; yPos < 10; yPos++) {
-                    int finalXPos = xPos;
-                    int finalYPos = yPos;
-                    Optional<Cube> any = cubes.stream()
-                            .filter(e -> e.getX() == finalXPos && e.getY() == finalYPos)
-                            .findAny();
-                    boolean active = false;
-                    if (any.isPresent() && any.get().getIsActive()) {
-                        active = true;
-                    }
-                    result.append(active ? "#" : ".");
-
-                }
-                System.out.println(result);
-            }
-        }
-    }
-
 
 }

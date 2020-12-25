@@ -1,6 +1,6 @@
 Merry Christmas
 
--=[Advent od code](https://adventofcode.com)=-  12/25
+-=[Advent of code](https://adventofcode.com)=-  34/50
 
            *             ,
                        _/^\_
